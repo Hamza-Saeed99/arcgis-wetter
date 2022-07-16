@@ -38,6 +38,8 @@ class CoordinateWidget extends Widget {
     @property()
     longitude: Number;
 
+    @property()
+    address: String;
     //--------------------------------------------------------------------------
     //
     //  Public Methods
@@ -50,6 +52,7 @@ class CoordinateWidget extends Widget {
                 <p>Getroffrene Koordinate: </p>
                 <p>Longitude: {this.longitude}</p>
                 <p>Latitude: {this.latitude}</p>
+                <p>Address: {this.address}</p>
             </div>
         );
     }

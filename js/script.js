@@ -48,14 +48,22 @@ require([
 
     let widget;
 
-    function clickEvent(event) {
+    async function clickEvent(event) {
         view.ui.remove(widget);
-        console.log(event.mapPoint);
+
+        const locationJSON = await fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${event.mapPoint.latitude},${event.mapPoint.longitude}&key=`
+        );
+        let location = await locationJSON.json();
+        location = JSON.stringify(location);
+        location = JSON.parse(location);
+        console.log(location);
         widget = new CoordinateWidget({
             latitude: event.mapPoint.latitude,
             longitude: event.mapPoint.longitude,
-            container: "widgetDiv",
+            address: location.results[0].formatted_address,
         });
+
         view.ui.add(widget, {
             position: "top-right",
         });

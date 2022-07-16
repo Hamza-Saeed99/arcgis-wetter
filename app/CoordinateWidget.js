@@ -35,6 +35,8 @@ define([
             //  lastName
             //----------------------------------
             _this.longitude;
+
+            _this.address;
             return _this;
         }
         //--------------------------------------------------------------------------
@@ -54,7 +56,8 @@ define([
                     null,
                     "Longitude: " + this.longitude
                 ),
-                widget_1.tsx("p", null, "Latitude: " + this.latitude)
+                widget_1.tsx("p", null, "Latitude: " + this.latitude),
+                widget_1.tsx("p", null, "Address: " + this.address)
             );
         };
         //--------------------------------------------------------------------------
@@ -72,6 +75,12 @@ define([
             [decorators_1.property()],
             CoordinateWidget.prototype,
             "latitude",
+            void 0
+        );
+        tslib_1.__decorate(
+            [decorators_1.property()],
+            CoordinateWidget.prototype,
+            "address",
             void 0
         );
         CoordinateWidget = tslib_1.__decorate(
