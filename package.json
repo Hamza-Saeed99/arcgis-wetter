@@ -1,25 +1,25 @@
 {
-  "name": "arcgis-wetter",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hamza-Saeed99/arcgis-wetter.git"
-  },
-  "keywords": [],
-  "author": "Hamza",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Hamza-Saeed99/arcgis-wetter/issues"
-  },
-  "homepage": "https://github.com/Hamza-Saeed99/arcgis-wetter#readme",
-  "dependencies": {
-    "@arcgis/core": "^4.24.7",
-    "@types/arcgis-js-api": "^4.24.0",
-    "tslib": "^2.4.0"
-  }
+    "name": "arcgis-wetter",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Hamza-Saeed99/arcgis-wetter.git"
+    },
+    "keywords": [],
+    "author": "Hamza",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Hamza-Saeed99/arcgis-wetter/issues"
+    },
+    "homepage": "https://github.com/Hamza-Saeed99/arcgis-wetter#readme",
+    "dependencies": {
+        "@arcgis/core": "^4.24.7",
+        "@types/arcgis-js-api": "^4.24.0",
+        "tslib": "^2.4.0"
+    }
 }

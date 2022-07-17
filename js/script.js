@@ -1,3 +1,5 @@
+const esriKey = config.ARCGIS_API_KEY;
+const googleKey = config.GOOGLE_API_KEY;
 require([
     "esri/config",
     "esri/Map",
@@ -13,8 +15,7 @@ require([
     BasemapToggle,
     CoordinateWidget
 ) {
-    esriConfig.apiKey =
-        "AAPKeb33e177756e4225bd577cec4349a9c72PYzrDgWeWqWrogZ5PteRqSlv95XVamtNYy1RbMybR-Wqe2UuJ0d_hvOln8RZ-R_";
+    esriConfig.apiKey = esriKey;
 
     const map = new Map({
         basemap: "dark-gray-vector",
@@ -52,7 +53,8 @@ require([
         view.ui.remove(widget);
 
         const locationJSON = await fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${event.mapPoint.latitude},${event.mapPoint.longitude}&key=`
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${event.mapPoint.latitude},${event.mapPoint.longitude}
+            &key=${googleKey}`
         );
         let location = await locationJSON.json();
         location = JSON.stringify(location);

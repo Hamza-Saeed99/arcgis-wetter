@@ -1,18 +1,9 @@
 define([
-    "require",
-    "exports",
     "tslib",
     "esri/core/accessorSupport/decorators",
     "esri/widgets/support/widget",
     "esri/widgets/Widget",
-], function (
-    require,
-    exports,
-    tslib_1,
-    decorators_1,
-    widget_1,
-    Widget
-) {
+], function (tslib_1, decorators_1, widget_1, Widget) {
     "use strict";
     var CSS = {
         base: "esri-coordinate-widget",
