@@ -7,9 +7,51 @@ body,
     width: 100%;
 }
 
-.esri-coordinate-widget {
+.esri-coordinate-widget,
+.esri-weather-widget {
     background-color: white;
     padding: 8px;
     border-radius: 2px;
     border: 1px solid black;
+    width: 350px;
+}
+
+.esri-weather-widget {
+    overflow: scroll;
+    max-height: calc(90vh - 200px);
+}
+
+.collapsible {
+    background-color: rgb(225, 225, 225);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #ccc;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible img {
+    height: 25px;
 }

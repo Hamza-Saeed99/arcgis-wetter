@@ -8,12 +8,12 @@ import { tsx } from "esri/widgets/support/widget";
 import Widget = require("esri/widgets/Widget");
 
 const CSS = {
-    base: "esri-coordinate-widget",
-    emphasis: "esri-coordinate-widget--emphasis",
+    base: "esri-weather-widget",
+    emphasis: "esri-weather-widget--emphasis",
 };
 
-@subclass("esri.widgets.CoordinateWidget")
-class CoordinateWidget extends Widget {
+@subclass("esri.widgets.weatherWidget")
+class WeatherWidget extends Widget {
     constructor(params?: any) {
         super(params);
     }
@@ -25,21 +25,19 @@ class CoordinateWidget extends Widget {
     //--------------------------------------------------------------------------
 
     //----------------------------------
-    //  firstName
+    //  city
     //----------------------------------
 
     @property()
-    latitude: Number;
+    city: string;
 
     //----------------------------------
-    //  lastName
+    //  weather
     //----------------------------------
 
     @property()
-    longitude: Number;
+    weather: any;
 
-    @property()
-    address: String;
     //--------------------------------------------------------------------------
     //
     //  Public Methods
@@ -49,10 +47,8 @@ class CoordinateWidget extends Widget {
     render() {
         return (
             <div class={this.classes(CSS.base)}>
-                <p>Getroffrene Koordinate: </p>
-                <p>Längengrad: {this.longitude}</p>
-                <p>Breitengrad: {this.latitude}</p>
-                <p>Adresse: {this.address}</p>
+                <p>Wettervorhersage für {this.city}: </p>
+                <p></p>
             </div>
         );
     }
@@ -64,4 +60,4 @@ class CoordinateWidget extends Widget {
     //--------------------------------------------------------------------------
 }
 
-export = CoordinateWidget;
+export = WeatherWidget;

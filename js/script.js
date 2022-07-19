@@ -1,5 +1,6 @@
 const esriKey = config.ARCGIS_API_KEY;
 const googleKey = config.GOOGLE_API_KEY;
+const weatherKey = config.WEATHER_API_KEY;
 require([
     "esri/config",
     "esri/Map",
@@ -7,13 +8,15 @@ require([
     "esri/layers/FeatureLayer",
     "esri/widgets/BasemapToggle",
     "./app/CoordinateWidget.js",
+    "./app/WeatherWidget.js",
 ], function (
     esriConfig,
     Map,
     MapView,
     FeatureLayer,
     BasemapToggle,
-    CoordinateWidget
+    CoordinateWidget,
+    WeatherWidget
 ) {
     esriConfig.apiKey = esriKey;
 
@@ -34,7 +37,9 @@ require([
         container: "viewDiv", // Div element
     });
 
-    view.on("click", clickEvent);
+    view.on("click", (event) => {
+        clickEvent(event);
+    });
 
     const toggle = new BasemapToggle({
         view: view,
@@ -47,10 +52,12 @@ require([
         position: "bottom-left",
     });
 
-    let widget;
+    let coordWidget;
+    let weatherWidget;
 
     async function clickEvent(event) {
-        view.ui.remove(widget);
+        view.ui.remove(coordWidget);
+        view.ui.remove(weatherWidget);
 
         const locationJSON = await fetch(
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${event.mapPoint.latitude},${event.mapPoint.longitude}
@@ -60,13 +67,29 @@ require([
         location = JSON.stringify(location);
         location = JSON.parse(location);
         console.log(location);
-        widget = new CoordinateWidget({
+        coordWidget = new CoordinateWidget({
             latitude: event.mapPoint.latitude,
             longitude: event.mapPoint.longitude,
             address: location.results[0].formatted_address,
         });
 
-        view.ui.add(widget, {
+        const weatherJSON = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&appid=${weatherKey}&units=metric`
+        );
+        let weather = await weatherJSON.json();
+        weather = JSON.stringify(weather);
+        weather = JSON.parse(weather);
+        console.log(weather);
+        weatherWidget = new WeatherWidget({
+            city: weather.city.name,
+            weather: weather.list,
+        });
+
+        view.ui.add(coordWidget, {
+            position: "top-right",
+        });
+
+        view.ui.add(weatherWidget, {
             position: "top-right",
         });
     }

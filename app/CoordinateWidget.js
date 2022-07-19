@@ -45,10 +45,14 @@ define([
                 widget_1.tsx(
                     "p",
                     null,
-                    "Longitude: " + this.longitude
+                    "Längengrad: " + this.longitude
                 ),
-                widget_1.tsx("p", null, "Latitude: " + this.latitude),
-                widget_1.tsx("p", null, "Address: " + this.address)
+                widget_1.tsx(
+                    "p",
+                    null,
+                    "Breitengrad: " + this.latitude
+                ),
+                widget_1.tsx("p", null, "Adresse: " + this.address)
             );
         };
         //--------------------------------------------------------------------------
